@@ -110,8 +110,8 @@
 				return regex.test(email);
 			}
 			function isFullName(name) {
-				const regex = /^(([àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđa-z]{2,})[\s]{0,}){2,}$/i;
-				return regex.test(name);
+				const regex = /^(([àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđa-z]{2,})[\s]{1,}){2,}$/i;
+				return regex.test(name + " ");
 			}
 
 
