@@ -658,7 +658,7 @@
 				let url = "/";
 				//update price to url
 				if (keyword != null){
-					currentURL = "search?"
+					currentURL = "search"
 					url = appendQueryStringParameter(currentURL, 'keyword', keyword);
 				}
 				url = appendQueryStringParameter(url, 'minPrice', minPrice);
@@ -698,6 +698,45 @@
 				
 			}
 		})
+	</script>
+	<!--====== Search =======-->
+	<script>
+		$(document).ready(function(){
+			
+			$('#search-form').submit(function(event){
+					event.preventDefault();
+				
+				const keyword = $('input[name="keyword"]').val();
+				const uri = location.href;
+				let url = "";
+				if (location.pathname == "/search"){
+					url = updateQueryStringParameter(uri, 'keyword', keyword);
+				}else{
+					let index = uri.indexOf('?');
+					
+					if (index==-1){
+						index = uri.length;
+						url = uri.slice(0, index) + 'search?keyword=' + keyword;
+						
+					}else{
+					    url = uri.slice(0, index) + 'search?keyword=' + keyword + '&' + uri.slice(index+1, uri.length);
+					}	
+				}
+				window.location.href = url;
+			})
+		})
+
+
+		function updateQueryStringParameter(uri, key, value) {
+				var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+				var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+				if (uri.match(re)) {
+					return uri.replace(re, '$1' + key + "=" + value + '$2');
+				}
+				else {
+					return uri + separator + key + "=" + value;
+				}
+			}
 	</script>
 	<!--========== ADD TO CART ==========-->
 	
