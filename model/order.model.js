@@ -45,4 +45,4 @@ module.exports.addOrder = async function(name, phone, address, cart, status, shi
     return newOrder;
 }
 
-module.exports.getOrderByUserID = userID => orderModel.find({userID: userID});
+module.exports.getOrderByUserID = userID => orderModel.find({userID: userID}).sort({'timeline.ordering': -1});

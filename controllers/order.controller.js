@@ -35,8 +35,11 @@ module.exports.checkout = async function(req, res){
 }
 
 module.exports.view_order = async function (req, res) {
+    if (!req.user){
+        return res.render('login');
+    }
+
     const userID = req.user._id;
-    
     const orders = await orderModel.getOrderByUserID(userID);
     
    

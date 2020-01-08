@@ -142,6 +142,12 @@ module.exports.search = async function (req, res) {
 module.exports.show_quickly = async function(req, res, next){
 	//need add try catch
 	const product = await productModel.getProductByID(req.query.idValue);
+	if (!product.countView){
+		product.countView = 1;
+	}else{
+		product.countView++;
+	}
+	await product.save();
 	
 	res.render('popup-page', {model: product, layout: false});
 };
