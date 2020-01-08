@@ -327,7 +327,7 @@
         let name = $('#name-order');
         let phone = $('#phone-order');
         let address = $('#address-order');
-        let error = $('.txt-err');
+        let error = $('.txt-err.err-in-form');
         
         name.click(function () {
             error.removeClass('show-err');
